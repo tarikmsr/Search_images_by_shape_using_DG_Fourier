@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./static/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="./static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="./static/css/style.css">
+
+    <!-- js  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+    <!--  -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Les Descripteurs de Fourier - Groupe 10</title>
+  </head>
+  <body>
+
+    <div class="loader_bg">
+      <div class="loader">
+        
+      </div>
+    </div>
+
+      <header class="site-navbar site-navbar-target" role="banner">
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+            <div class="col-3">
+              <div class="site-logo">
+                <a href="index.html" class="font-weight-bold">GROUPE 10</a>
+              </div>
+            </div>
+            <div class="col-9  text-right"> 
+              <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                  <li class="active"><a href="#" class="nav-link">Home</a></li>
+                  <li><a href="./static/mode1.html" class="nav-link">Mode Sans Pertinence</a></li>
+                  <li><a href="#" class="nav-link">Mode Avec Pertinence</a></li>
+                  <li><a href="#" class="nav-link">Les coefficients de Fourier</a></li>
+                  <li><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+              </nav>
+            </div>     
+          </div>
+        </div>
+      </header>
+      <video autoplay muted loop id="myVideo">
+        <source src="./static/images/colors.mp4" type="video/mp4">
+      </video>
+      <div class="grid container" >
+        <div><h1>Mode de Recherche sans pertinance</h1></div>
+
+        <div class="grid-2-rows" >
+
+          <div  class="rows" style="height: fit-content;">
+          <h2><span class="circle">1</span>Uploader une image</h2>
+
+            <div class="divided-2">
+              <div class="divide-upload">
+                <div style="height: 50px;"><p>Choisir une image de votre ordinateur (png, jpg, jpeg, gif)</p></div>
+                <div>  
+                    <div class="form-upload">
+                      <div><p><input for="file" type="file" id="file" name="imageUploaded" onchange="PreviewImage();" class="form-control" autocomplete="off" required></p></div>
+                      <div><p><input type="submit"  name="submit_image"  id="upload" value=""  onclick="send()" class="btn btn-info"></p></div>
+                    </div>
+                </div>
+                <div class="image-uploader" id="imageShow">
+                  <div class="second-div">
+                    <img id="uploadPreview" class="image-upload"  src="./static/images/defaut_image.png" />                       
+                    </div>
+                 
+                  <!--<img src="./static/images/defaut_image.png" class="image-upload" >-->
+                </div>
+                <div>
+                  <p><button class=" btn btn-info " value= "" onclick="SearchImage(value)" id="searchONE">Rechercher</button></p> <!--v-on:click="search2(value)"-->
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="or-separator">
+                  <div class="vertical-line"></div>
+                  <div>Où</div>
+                  <div class="vertical-line"></div>
+                </div>
+              </div>
+
+              <div class="divide-upload">
+                <div style="height: 50px;"><p>Choisir une image d'exemple de notre base de données.</p></div>
+                <div>
+                  <div class="images-display" id="images-display">
+                    <img  id="image1" src="./images/chicken-3.png" alt="chicken-3.png" onclick="chooseOne(src)"/>
+                    <img  id="image2" src="./images/apple-1.png"   alt="apple-1.png"   onclick="chooseOne(src)"/>
+                    <img  id="image3" src="./images/deer-7.png"    alt="deer-7.png"    onclick="chooseOne(src)"/>
+                    <img  id="image4" src="./images/cup-16.png"    alt="cup-16.png"    onclick="chooseOne(src)"/>
+                    <img  id="image5" src="./images/bat-5.png"     alt="bat-5.png"     onclick="chooseOne(src)"/>
+                    <img  id="image6" src="./images/bird-13.png"   alt="bird-13.png"   onclick="chooseOne(src)"/>
+                    <img  id="image7" src="./images//camel-13.png" alt="camel-13.png"  onclick="chooseOne(src)"/>
+                    <img  id="image8" src="./images/device2-4.png" alt="device2-4.png" onclick="chooseOne(src)"/>
+                    <img  id="image9" src="./images/fly-13.png"    alt="fly-13.png"    onclick="chooseOne(src)"/>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-info" style="border-radius: 100%;" alt="search images randomly" onclick="get_random_image()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16" color="white">
+                      <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+                      <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+                    </svg>
+                  </button>                     
+                </div>
+              </div>
+
+              </div>  
+            </div>
+          </div>
+
+          <div class="rows" style="margin-bottom: 50px;">
+            <h2><span class="circle">2</span>Résultat</h2>
+            <div style="margin-left: 30px;"><p>Voici les résultats les plus proches de la recherche depuis l'image.</p></div>
+            <div class="results" id="boddy_result">
+              <div class="card" v-for="result in search_results">
+                <img v-bind:src="[[result.path]]" class="card-img-top" onclick="chooseOne(src)" v-bind:alt="[[result.name]]">
+                <div class="card-footer"><p> Distance : [[result.distance.toFixed(6)]] </p></div>
+                <div class="card-footer"><p> Nom : [[result.name]] </p></div>
+                <div  style= " align-items: center ; justify-content: center; align-content: center; align-self: center;">
+                  <button class="btn btn-outline-success" v-bind:value="[[result.path]]" onclick="SearchImagePertinanceUp(value)" type="button" style="width: 90px "> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                      <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
+                    </svg>                                  
+                  </button>
+
+                  <button class="btn btn-outline-danger" v-bind:value="[[result.path]]" onclick="SearchImagePertinanceDown(value)" type="button" style="width: 90px;"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+                      <path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"></path>
+                    </svg>         
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+    <script src="./static/js/jquery-3.3.1.min.js"></script>
+    <script src="./static/js/popper.min.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+    <script src="./static/js/jquery.sticky.js"></script>
+    <script src="./static/js/main.js"></script>
+    <script src="./static/js/getresult.js"></script>
+    <script src="./static/js/random.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function(){
+            $('.loader_bg').fadeToggle();
+        }, 1500);
+    </script>
+
+
+
+
+  </body>
+</html>
