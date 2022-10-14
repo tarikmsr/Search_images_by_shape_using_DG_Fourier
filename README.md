@@ -1,4 +1,4 @@
-# search_image_by_shape_using_DG_Fourier
+# System for indexing and searching for images by shape
 
 The main objective of this mini-project is to index and search for images based on
 on the shape characteristics that we will extract from the images thanks to the use of
