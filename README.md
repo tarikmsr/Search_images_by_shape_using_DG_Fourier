@@ -10,6 +10,9 @@ of fourrier then I calculate the similarity between the image given by the user 
 that I have already indexed in the image database. The result returned by the program is the
 images similar to the entrance image.
 
+Technologies: Flask, Python, Vuejs, Html, Css, JavaScript, Bootstrap
+
+
 ![image](https://user-images.githubusercontent.com/64175026/148092099-064d5c09-367e-4144-9e26-6505141982ea.png)
 
 choose image
